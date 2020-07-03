@@ -2,7 +2,7 @@
 //  ViewController.swift
 //  Project1
 //
-//  Created by ACCOLITE on 26/05/20.
+//  Created by Pradeep Reddy Kypa on 26/05/20.
 //  Copyright © 2020 Pradeep. All rights reserved.
 //
 
@@ -35,6 +35,15 @@ class ViewController: UITableViewController {
         print(pictures)
         
         navigationController?.navigationBar.prefersLargeTitles = true
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(onTapOfShare))
+    }
+    
+    @objc func onTapOfShare(){
+        
+        let activityViewController = UIActivityViewController(activityItems: ["I am using an ImageSlideShow to show Images"], applicationActivities: [])
+        activityViewController.popoverPresentationController?.barButtonItem = navigationItem.rightBarButtonItem
+        present(activityViewController, animated: true)
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
